@@ -1,0 +1,17 @@
+.test {
+  text-align: center;
+}
+
+.tekstbolk {
+  height: 500px;
+}
+
+.backbutton { 
+  width: 70px;
+  margin: 10px;
+}
+
+.forwardbutton {
+  width: 70px; 
+  margin: 15px;
+}
