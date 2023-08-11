@@ -1,0 +1,12 @@
+.outer {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid grey;
+    max-width: 550px;
+}
+
+.inner {
+    background-color: lightgray;
+    padding: 7px 0px;
+    border-top: 1px solid gray;
+}
