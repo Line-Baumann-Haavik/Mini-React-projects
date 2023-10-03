@@ -15,6 +15,15 @@ export default function SimpleInput(props) {
     setEnteredName(event.target.value);
   }
 
+  function inputBlurHandler(event){
+    setInputIsTouched(true);
+
+    if (enteredName.trim() === "") {
+      setIsValid(false);
+      return;
+    }
+  }
+
   function submitHandler(event) {
     event.preventDefault();
     setInputIsTouched(true);
@@ -43,6 +52,7 @@ export default function SimpleInput(props) {
           id="name"
           onChange={nameInputChangeHandler}
           value={enteredName}
+          onBlur={inputBlurHandler}
         />
         {nameInputIsInvalid && <p className="error-text">Name can not be empty</p>}
       </div>
