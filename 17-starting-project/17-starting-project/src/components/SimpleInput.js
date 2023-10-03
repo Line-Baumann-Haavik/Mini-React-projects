@@ -7,11 +7,22 @@ export default function SimpleInput(props) {
     setEnteredName(event.target.value);
   }
 
+  function submitHandler(event){
+    event.preventDefault();
+
+    if(enteredName.trim() === ""){
+      return;
+    }
+
+    console.log(enteredName);
+    setEnteredName("");
+  }
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className='form-control'>
         <label htmlFor='name'>Your Name</label>
-        <input type='text' id='name' onChange={nameInputChangeHandler} />
+        <input type='text' id='name' onChange={nameInputChangeHandler} value={enteredName} />
       </div>
       <div className="form-actions">
         <button>Submit</button>
