@@ -1,6 +1,6 @@
 import SimpleInput from './components/SimpleInput';
 
-function App() {
+export default function App() {
   return (
     <div className="app">
       <SimpleInput />
@@ -8,4 +8,3 @@ function App() {
   );
 }
 
-export default App;
