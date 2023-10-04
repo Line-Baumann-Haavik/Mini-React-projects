@@ -5,7 +5,11 @@ export default function SimpleInput(props) {
   const [inputIsTouched, setInputIsTouched] = useState(false);
   const isValid = enteredName.trim() !== "";
   const nameInputIsInvalid = !isValid && inputIsTouched;
+  let formIsValid = false;
 
+    if(isValid){
+      formIsValid = true;
+    }
 
   function nameInputChangeHandler(event) {
     setEnteredName(event.target.value);
@@ -46,7 +50,7 @@ export default function SimpleInput(props) {
         {nameInputIsInvalid && <p className="error-text">Name can not be empty</p>}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
