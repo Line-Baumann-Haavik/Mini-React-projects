@@ -8,7 +8,7 @@ export default function Checkout() {
         <input type="text" id="name" />
       </div>
       <div className={styles.control}>
-        <label htmlFor="street">Street</label>
+        <label htmlFor="street">Street!</label>
         <input type="text" id="street" />
       </div>
       <div className={styles.control}>
