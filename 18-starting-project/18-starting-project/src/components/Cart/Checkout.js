@@ -12,7 +12,7 @@ export default function Checkout() {
         <input type="text" id="street" />
       </div>
       <div className={styles.control}>
-        <label htmlFor="postal">Postal Code!</label>
+        <label htmlFor="postal">Postal Code</label>
         <input type="text" id="postal" />
       </div>
       <div className={styles.control}>
