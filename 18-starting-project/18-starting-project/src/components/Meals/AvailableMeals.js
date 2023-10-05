@@ -8,10 +8,16 @@ import { useEffect, useState } from 'react';
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState();
 
   useEffect(() => {
     async function getHttp(){
       const response = await fetch("https://react-mini-projects-a774a-default-rtdb.europe-west1.firebasedatabase.app/meals.json");
+
+      if(!response.ok){
+        throw new Error("Something went wrong!");
+      }
+
       const responseData = await response.json();
       const loadedMeals = [];
 
@@ -26,8 +32,12 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     }
-
-    getHttp();
+      getHttp().catch((error) => {
+        setIsLoading(false);
+        setIsError(error.message);
+      });
+     
+    
     
   }, []);
 
@@ -35,6 +45,15 @@ const AvailableMeals = () => {
     return(
       <section className={classes.MealsLoading}>
         <p>Loading...</p>
+      </section>
+    )
+  }
+
+  if(isError){
+    return(
+      <section className={classes.MealsLoading}>
+        <p>There was an error:</p>
+        <p>{isError}</p>
       </section>
     )
   }
