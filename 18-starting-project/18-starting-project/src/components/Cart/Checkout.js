@@ -33,8 +33,8 @@ export default function Checkout(props){
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredPostalCodeIsValid = !isEmpty(enteredPostalCode);
-    const enteredCityIsValid = correctLength(enteredCity);
+    const enteredPostalCodeIsValid = correctLength(enteredPostalCode);
+    const enteredCityIsValid = !isEmpty(enteredCity);
 
     setFormValidity({
       name: enteredNameIsValid,
@@ -44,9 +44,14 @@ export default function Checkout(props){
     });
 
     if(enteredNameIsValid && enteredStreetIsValid && enteredPostalCodeIsValid && enteredCityIsValid){
-      //submit the form
+      props.onConfirm({
+        name: enteredName,
+        street: enteredStreet,
+        postalCode: enteredPostalCode,
+        city: enteredCity
+      });
     }else{
-
+      return;
     }
   };
 

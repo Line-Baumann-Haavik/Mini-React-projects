@@ -9,6 +9,7 @@ import Checkout from "./Checkout";
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -23,6 +24,17 @@ const Cart = (props) => {
 
   function orderHandler() {
     setIsCheckout(true);
+  }
+
+  function submitHandler(eventData){
+    setIsSubmitting(true);
+    fetch("https://react-mini-projects-a774a-default-rtdb.europe-west1.firebasedatabase.app/orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: eventData,
+        orderedItems: cartCtx.items,
+      })
+    });
   }
 
   const cartItems = (
@@ -60,7 +72,7 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onClose} />}
+      {isCheckout && <Checkout onConfirm={submitHandler} onCancel={props.onClose} />}
       {!isCheckout && modalActions}
     </Modal>
   );
