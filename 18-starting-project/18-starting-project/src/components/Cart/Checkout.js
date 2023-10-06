@@ -1,6 +1,14 @@
 import { useRef } from 'react';
 import classes from './Checkout.module.css';
 
+function isEmpty(value){
+  return(value.trim() !== "");
+}
+
+function correctLength(number){
+  return(number.trim().length === 4);
+}
+
 export default function Checkout(props){
     const nameInputRef = useRef();
     const streetInputRef = useRef();
@@ -15,6 +23,11 @@ export default function Checkout(props){
     const enteredStreet = streetInputRef.current.value;
     const enteredPostalCode = postalInputRef.current.value;
     const enteredCity = cityInputRef.current.value;
+
+    const enteredNameIsValid = !isEmpty(enteredName);
+    const enteredStreetIsValid = !isEmpty(enteredStreet);
+    const enteredPostalCodeIsValid = !isEmpty(enteredPostalCode);
+    const enteredCityIsValid = correctLength(enteredCity);
   };
 
   return (
