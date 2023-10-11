@@ -13,7 +13,7 @@ export default function MainNavigation() {
             <NavLink to="/events" className={({isActive}) => {return isActive ? classes.active : undefined}}>Events</NavLink>
           </li>
           <li>
-            <NavLink to="/events/new" className={({isActive}) => {return isActive ? classes.active : undefined}}>New Event</NavLink>
+            <NavLink to="new" className={({isActive}) => {return isActive ? classes.active : undefined}}>New Event</NavLink>
           </li>
         </ul>
       </nav>
