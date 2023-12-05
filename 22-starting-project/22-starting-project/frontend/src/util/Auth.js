@@ -8,7 +8,7 @@ export function getTokenDuration() {
   return duration;
 }
 
-export function getToken() {
+export default function getToken() {
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -29,7 +29,7 @@ export function tokenLoader() {
   return token;
 }
 
-export function checkAuthLoader() {
+export function checkAuthToken() {
   const token = getToken();
 
   if (!token) {
